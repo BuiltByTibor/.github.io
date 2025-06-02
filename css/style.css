@@ -25,95 +25,6 @@
     --border-color: #c1c9b8;         /* Soft green-gray */
     --hover-color: #9cb284;          /* Medium sage */
 }
-/* Ruler-like borders */
-.tab-content {
-  border-top: 1px solid #ddd;
-  border-left: 1px solid #ddd;
-  position: relative;
-}
-
-.tab-content::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  width: calc(100% - 2px);
-  height: calc(100% - 2px);
-  border-right: 1px solid #ddd;
-  border-bottom: 1px solid #ddd;
-  pointer-events: none;
-}
-/* Tips Dropdown */
-.tips-trigger {
-  position: relative;
-}
-
-.tips-dropdown {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  background: var(--primary-color);
-  color: white;
-  padding: 1rem;
-  border-radius: 0 0 8px 8px;
-  width: 200px;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-  display: none;
-  z-index: 100;
-}
-
-.tips-trigger:hover .tips-dropdown {
-  display: block;
-  animation: fadeIn 0.3s ease;
-}
-
-.tips-dropdown p {
-  margin: 0.5rem 0;
-  font-size: 0.9rem;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(-10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-/* Mechanical Design Elements */
-:root {
-  --gear-size: 50px;
-  --bolt-color: #95a5a6;
-}
-
-/* Gear decoration in header */
-header {
-  position: relative;
-  overflow: hidden;
-}
-
-header::before {
-  content: "⚙️⚙️";
-  position: absolute;
-  right: -20px;
-  top: 50%;
-  transform: translateY(-50%) rotate(0deg);
-  font-size: var(--gear-size);
-  opacity: 0.15;
-  animation: spin 20s linear infinite;
-  z-index: 0;
-}
-
-body {
-  background-image: 
-    /* Vertical lines */
-    linear-gradient(rgba(100, 150, 255, 0.15) 1px, transparent 1px),
-    /* Horizontal lines */
-    linear-gradient(90deg, rgba(100, 150, 255, 0.15) 1px, transparent 1px),
-    40px 40px, /* Grid size */
-    
-
-/* Animation for gears */
-@keyframes spin {
-  from { transform: translateY(-50%) rotate(0deg); }
-  to { transform: translateY(-50%) rotate(360deg); }
-}
 
 * {
     margin: 0;
@@ -126,6 +37,12 @@ body {
     line-height: 1.6;
     color: var(--text-color);
     background-color: #f5f5f5;
+    background-image: 
+        /* Vertical lines */
+        linear-gradient(rgba(100, 150, 255, 0.15) 1px, transparent 1px),
+        /* Horizontal lines */
+        linear-gradient(90deg, rgba(100, 150, 255, 0.15) 1px, transparent 1px);
+    background-size: 40px 40px;
 }
 
 a {
@@ -141,12 +58,28 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+header::before {
+    content: "⚙️⚙️";
+    position: absolute;
+    right: -20px;
+    top: 50%;
+    transform: translateY(-50%) rotate(0deg);
+    font-size: var(--gear-size);
+    opacity: 0.15;
+    animation: spin 20s linear infinite;
+    z-index: 0;
 }
 
 .logo {
     font-size: 1.8rem;
     font-weight: bold;
     color: var(--text-light);
+    position: relative;
+    z-index: 1;
 }
 
 .logo span {
@@ -156,6 +89,8 @@ header {
 nav ul {
     display: flex;
     list-style: none;
+    position: relative;
+    z-index: 1;
 }
 
 nav ul li {
@@ -174,11 +109,10 @@ nav ul li a:hover {
 
 /* Main Content Styles */
 main {
-  padding: 2rem;
-  max-width: 1200px;
-  margin: 0 auto; /* Centers content with side gaps */
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
 }
-
 
 .hero {
     text-align: center;
@@ -328,6 +262,21 @@ main {
     background: var(--text-light);
     border-radius: 0 8px 8px 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-top: 1px solid #ddd;
+    border-left: 1px solid #ddd;
+    position: relative;
+}
+
+.tab-content::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: calc(100% - 2px);
+    height: calc(100% - 2px);
+    border-right: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    pointer-events: none;
 }
 
 .tab-content.active {
@@ -463,6 +412,41 @@ main {
     margin-top: 2rem;
 }
 
+/* Tips Dropdown */
+.tips-trigger {
+    position: relative;
+}
+
+.tips-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: var(--primary-color);
+    color: white;
+    padding: 1rem;
+    border-radius: 0 0 8px 8px;
+    width: 200px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    display: none;
+    z-index: 100;
+}
+
+.tips-trigger:hover .tips-dropdown {
+    display: block;
+    animation: fadeIn 0.3s ease;
+}
+
+.tips-dropdown p {
+    margin: 0.5rem 0;
+    font-size: 0.9rem;
+}
+
+/* Mechanical Design Elements */
+:root {
+    --gear-size: 50px;
+    --bolt-color: #95a5a6;
+}
+
 /* Footer */
 footer {
     background-color: var(--primary-color);
@@ -487,6 +471,17 @@ footer {
 
 .social-icon:hover {
     color: var(--secondary-color);
+}
+
+/* Animations */
+@keyframes spin {
+    from { transform: translateY(-50%) rotate(0deg); }
+    to { transform: translateY(-50%) rotate(360deg); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 /* Responsive Design */
@@ -536,10 +531,11 @@ footer {
         flex-direction: column;
         gap: 0.5rem;
     }
-@media (max-width: 1240px) {
-  header, footer, main {
-    padding-left: 20px;
-    padding-right: 20px;
-  }
 }
- 
+
+@media (max-width: 1240px) {
+    header, footer, main {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+} 
