@@ -1,35 +1,30 @@
 /* Base Styles */
 :root {
-    --primary-color: #2c3e50;
-    --secondary-color: #3498db;
-    --accent-color: #e74c3c;
-    --light-color: #ecf0f1;
-    --dark-color: #2c3e50;
-    --success-color: #2ecc71;
-    --warning-color: #f39c12;
-    --danger-color: #e74c3c;
-    --flashcard-front: #3498db;
-    --flashcard-back: #2980b9;
-    --text-color: #333;
-    --text-light: #fff;
+    /* Sage Green Dominant Palette */
+    --primary-color: #f8f9fa;        /* Light cream background */
+    --secondary-color: #87a96b;      /* Primary sage green */
+    --accent-color: #6b8e23;        /* Olive green accent */
+    --light-color: #e9e9e9;          /* Light gray */
+    --dark-color: #2a3a1f;           /* Dark forest green */
+    
+    /* Status Colors */
+    --success-color: #4c7a5d;        /* Deep sage */
+    --warning-color: #b5a642;        /* Mustard yellow */
+    --danger-color: #a63d40;         /* Earthy red */
+    
+    /* Flashcard Colors */
+    --flashcard-front: #d4e6b5;      /* Pale sage front */
+    --flashcard-back: #a3b899;       /* Muted sage back */
+    
+    /* Text Colors */
+    --text-color: #1a1a1a;           /* Pure black */
+    --text-light: #f8f9fa;           /* Light cream */
+    
+    /* New Complementary Colors */
+    --panel-color: #f1f7e8;          /* Very light sage */
+    --border-color: #c1c9b8;         /* Soft green-gray */
+    --hover-color: #9cb284;          /* Medium sage */
 }
-/* Screw heads in corners */
-.module-card::before {
-  content: "";
-  position: absolute;
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: radial-gradient(circle, var(--bolt-color) 30%, transparent 31%);
-  background-size: 5px 5px;
-  box-shadow: inset 0 0 0 2px var(--bolt-color);
-}
-
-.module-card::before {
-  top: 5px;
-  left: 5px;
-}
-
 /* Ruler-like borders */
 .tab-content {
   border-top: 1px solid #ddd;
@@ -105,27 +100,43 @@ header::before {
   z-index: 0;
 }
 
-/* Bolt decoration on cards */
-.module-card, .topic-card {
+body {
+  /* Dark paper base */
+  background-color: #121212;
+  
+  /* Blueprint grid */
+  background-image: 
+    /* Vertical lines */
+    linear-gradient(rgba(100, 150, 255, 0.15) 1px, transparent 1px),
+    /* Horizontal lines */
+    linear-gradient(90deg, rgba(100, 150, 255, 0.15) 1px, transparent 1px),
+    /* Subtle paper texture */
+    radial-gradient(circle at center, #121212 0%, #0a0a0a 100%);
+  
+  background-size: 
+    40px 40px, /* Grid size */
+    40px 40px, 
+    100% 100%;
+  
+  /* Optional: Add faded grid coordinates */
   position: relative;
 }
 
-.module-card::after, .topic-card::after {
-  content: "⚡";
+/* Optional coordinate markers */
+body::before {
+  content: "";
   position: absolute;
-  top: -10px;
-  right: -10px;
-  font-size: 1.5rem;
-  color: var(--bolt-color);
-  opacity: 0.7;
-}
-
-/* Blueprint-like grid background */
-body {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   background-image: 
-    linear-gradient(rgba(200, 200, 255, 0.2) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(200, 200, 255, 0.2) 1px, transparent 1px);
-  background-size: 40px 40px;
+    /* Horizontal coordinates */
+    linear-gradient(90deg, transparent 95%, rgba(100, 150, 255, 0.1) 95%),
+    /* Vertical coordinates */
+    linear-gradient(transparent 95%, rgba(100, 150, 255, 0.1) 95%);
+  background-size: 200px 200px;
+  pointer-events: none;
 }
 
 /* Animation for gears */
@@ -160,7 +171,6 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .logo {
@@ -202,7 +212,7 @@ main {
 
 .hero {
     text-align: center;
-    padding: 1rem calc((100% - 1200px) / 2);
+    padding: 1rem calc((70% - 1200px) / 2);
     background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
     color: var(--text-light);
     border-radius: 8px;
@@ -210,12 +220,12 @@ main {
 }
 
 .hero h1 {
-    font-size: 2.5rem;
+    font-size: 2rem;
     margin-bottom: 1rem;
 }
 
 .subtitle {
-    font-size: 1.2rem;
+    font-size: 0.8rem;
     opacity: 0.9;
 }
 
