@@ -15,22 +15,6 @@ document.addEventListener('DOMContentLoaded', function() {
             document.getElementById(tabId).classList.add('active');
         });
     });
-    // Dark Mode Toggle
-const darkModeToggle = document.getElementById('dark-mode-toggle');
-const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
-
-// Check for saved preference or system preference
-if (localStorage.getItem('darkMode') === 'enabled' || 
-    (localStorage.getItem('darkMode') !== 'disabled' && prefersDarkScheme.matches)) {
-  document.body.classList.add('dark-mode');
-}
-
-// Toggle functionality
-darkModeToggle.addEventListener('click', () => {
-  document.body.classList.toggle('dark-mode');
-  const isDark = document.body.classList.contains('dark-mode');
-  localStorage.setItem('darkMode', isDark ? 'enabled' : 'disabled');
-});
     // Practice questions functionality
     const checkAnswerBtns = document.querySelectorAll('.check-answer');
     
@@ -45,7 +29,7 @@ darkModeToggle.addEventListener('click', () => {
                 input.style.borderColor = '#2ecc71';
             } else {
                 input.style.borderColor = '#e74c3c';
-                alert('Try again!');
+                alert('Try again! You can do this😉💪');
             }
         });
     });
