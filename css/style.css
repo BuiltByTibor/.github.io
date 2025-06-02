@@ -1,30 +1,78 @@
-/* Sage Green Mechanical Engineering Theme */
+/* Mechanical Engineering Theme - Sage Green Industrial */
 :root {
-  --primary: #354f52;
-  --secondary: #588157;
-  --accent: #a5a58d;
-  --light: #dad7cd;
-  --dark: #1a2e2a;
-  --text: #dad7cd;
-  --panel: #2d3e36;
-  --pipe: #3a5a40;
-  --footer-link: #8b9e8a;
+  /* Color Palette */
+  --primary: #354f52;       /* Dark sage green */
+  --secondary: #588157;     /* Medium sage green */
+  --accent: #a5a58d;       /* Light sage */
+  --light: #dad7cd;        /* Very light sage */
+  --dark: #1a2e2a;         /* Very dark green */
+  --success: #588157;      /* Sage green */
+  --warning: #bc6c25;      /* Rust orange */
+  --danger: #9e2a2b;       /* Dark red */
+  --text: #dad7cd;         /* Light text */
+  --text-dark: #8b9e8a;    /* Darker text for footers */
+  --panel: #2d3e36;        /* Dark panel background */
+  --pipe: #3a5a40;        /* Pipe/mechanical accent color */
+  --bolt: #6b8e7d;        /* Bolt/screw color */
+  
+  /* Sizing */
+  --gear-size: 2rem;
+  --border-radius: 6px;
+  --border-thick: 2px;
+  --border-thin: 1px;
+  
+  /* Shadows */
+  --shadow-sm: 0 2px 8px rgba(0,0,0,0.1);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.15);
+  --shadow-lg: 0 8px 20px rgba(0,0,0,0.2);
+  
+  /* Transitions */
+  --transition-fast: 0.2s ease;
+  --transition-med: 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  --transition-slow: 0.4s ease-out;
 }
 
+/* Base Styles */
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
   line-height: 1.6;
   color: var(--text);
   background-color: var(--dark);
   background-image: 
+    /* Blueprint grid */
     linear-gradient(rgba(88, 129, 87, 0.1) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(88, 129, 87, 0.1) 1px, transparent 1px);
-  background-size: 40px 40px;
+    linear-gradient(90deg, rgba(88, 129, 87, 0.1) 1px, transparent 1px),
+    /* Subtle radial gradient */
+    radial-gradient(circle at 10% 20%, var(--primary) 0%, transparent 20%),
+    radial-gradient(circle at 90% 80%, var(--primary) 0%, transparent 20%);
+  background-size: 40px 40px, 40px 40px, 500px 500px, 500px 500px;
+  background-attachment: fixed;
   margin: 0;
-  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
-/* Header with Motor Icon */
+/* Typography */
+h1, h2, h3, h4 {
+  font-weight: 700;
+  line-height: 1.2;
+  margin-top: 0;
+}
+
+h1 { font-size: 2.5rem; }
+h2 { font-size: 2rem; }
+h3 { font-size: 1.75rem; }
+h4 { font-size: 1.5rem; }
+
+a {
+  color: var(--secondary);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+a:hover { color: var(--accent); }
+
+/* Header with Animated Gear */
 header {
   background: var(--primary);
   color: var(--light);
@@ -32,35 +80,41 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 2px solid var(--secondary);
+  border-bottom: var(--border-thick) solid var(--secondary);
   position: relative;
+  z-index: 100;
+  box-shadow: var(--shadow-sm);
 }
 
+/* Animated gear icon */
 header::after {
   content: "⚙";
   position: absolute;
   right: 40px;
-  font-size: 2rem;
+  font-size: var(--gear-size);
   opacity: 0.3;
   animation: spin 12s linear infinite;
+  filter: drop-shadow(0 0 2px rgba(0,0,0,0.3));
 }
 
 @keyframes spin {
-  from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
 
 .logo {
   font-size: 1.8rem;
-  font-weight: 700;
+  font-weight: 800;
   letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
-
 .logo span { 
   color: var(--secondary);
+  font-weight: 900;
 }
 
-/* Navigation with Spacing */
+/* Navigation with Enhanced Hover Effects */
 nav ul {
   display: flex;
   gap: 3rem;
@@ -71,109 +125,255 @@ nav ul {
 
 nav a {
   color: var(--light);
-  transition: all 0.3s;
   font-size: 1.1rem;
-  font-weight: 500;
-  padding: 0.5rem 0;
+  font-weight: 600;
+  padding: 0.75rem 0;
   position: relative;
-  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
-nav a:hover { 
-  color: var(--accent);
-}
-
-nav a:hover::after {
+nav a::before {
   content: "";
   position: absolute;
   bottom: 0;
   left: 0;
-  width: 100%;
+  width: 0;
   height: 2px;
   background: var(--accent);
+  transition: width var(--transition-med);
 }
 
-/* Main Content Sections */
+nav a:hover::before {
+  width: 100%;
+}
+
+/* Main Content Layout */
 main {
   padding: 3rem;
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
+  width: 100%;
+  flex: 1;
 }
 
-.section-box {
+/* Section Styling with Industrial Flair */
+.section {
   background: var(--panel);
-  border: 1px solid var(--pipe);
-  border-radius: 6px;
+  border: var(--border-thin) solid var(--pipe);
+  border-radius: var(--border-radius);
   padding: 2.5rem;
   margin-bottom: 3rem;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  transition: all 0.3s ease;
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-med);
+  position: relative;
+  overflow: hidden;
 }
 
-.section-box:hover {
+.section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: var(--secondary);
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform var(--transition-slow);
+}
+
+.section:hover {
   transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  box-shadow: var(--shadow-lg);
+}
+.section:hover::before {
+  transform: scaleY(1);
 }
 
+/* Section Titles with Underline Accent */
 .section-title {
-  color: var(--light);
-  font-size: 1.8rem;
-  margin-bottom: 1.5rem;
-  padding-bottom: 0.8rem;
-  border-bottom: 2px solid var(--secondary);
+  position: relative;
+  padding-bottom: 1rem;
+  margin-bottom: 2rem;
 }
 
-/* Grid Layout */
+.section-title::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background: var(--secondary);
+  border-radius: 3px;
+}
+
+/* Grid System for Cards */
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2.5rem;
   margin: 2.5rem 0;
 }
 
+/* Card Design with Screw Details */
 .card {
   background: var(--panel);
-  border: 1px solid var(--pipe);
-  border-radius: 6px;
+  border: var(--border-thin) solid var(--pipe);
+  border-radius: var(--border-radius);
   padding: 2rem;
-  transition: all 0.3s;
+  transition: all var(--transition-med);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Screw head corners */
+.card::before,
+.card::after {
+  content: "";
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--bolt) 40%, transparent 41%);
+  background-size: 6px 6px;
+  box-shadow: inset 0 0 0 2px var(--bolt);
+}
+
+.card::before {
+  top: 8px;
+  left: 8px;
+}
+.card::after {
+  bottom: 8px;
+  right: 8px;
 }
 
 .card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-  border-left: 4px solid var(--secondary);
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--secondary);
 }
 
-/* Buttons */
+/* Buttons with Industrial Feel */
 .btn {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   background: var(--primary);
   color: var(--light);
-  padding: 0.8rem 1.8rem;
-  border: 1px solid var(--pipe);
-  border-radius: 4px;
+  padding: 0.8rem 2rem;
+  border: var(--border-thin) solid var(--pipe);
+  border-radius: var(--border-radius);
   font-weight: 600;
   letter-spacing: 0.5px;
-  transition: all 0.3s;
+  transition: all var(--transition-med);
   cursor: pointer;
-  text-align: center;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
 }
 
-.btn:hover { 
+.btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
   background: var(--secondary);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  transition: width var(--transition-med);
+  z-index: -1;
 }
 
-/* Footer with Darker Links */
+.btn:hover {
+  color: var(--light);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+.btn:hover::before {
+  width: 100%;
+}
+
+/* Tab System */
+.tabs {
+  display: flex;
+  border-bottom: var(--border-thick) solid var(--pipe);
+  margin-bottom: 1.5rem;
+}
+
+.tab-btn {
+  background: var(--dark);
+  border: var(--border-thin) solid var(--pipe);
+  border-bottom: none;
+  padding: 0.8rem 1.5rem;
+  margin-right: 0.5rem;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  position: relative;
+}
+
+.tab-btn.active {
+  background: var(--panel);
+  color: var(--secondary);
+  font-weight: 600;
+}
+
+.tab-btn.active::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--secondary);
+}
+
+.tab-content {
+  display: none;
+  padding: 1.5rem;
+  background: var(--panel);
+  border-radius: 0 0 var(--border-radius) var(--border-radius);
+}
+.tab-content.active {
+  display: block;
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Footer with Circuit Board Style */
 footer {
   background: var(--primary);
   color: var(--light);
   text-align: center;
   padding: 3rem 2rem;
-  border-top: 2px solid var(--secondary);
+  border-top: var(--border-thick) solid var(--secondary);
   margin-top: 3rem;
+  position: relative;
+}
+
+/* Circuit board lines */
+footer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, 
+    transparent, 
+    var(--secondary), 
+    transparent);
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .footer-links {
@@ -181,63 +381,107 @@ footer {
   justify-content: center;
   gap: 3rem;
   margin: 2rem 0;
+  flex-wrap: wrap;
 }
 
 .footer-links a {
-  color: var(--footer-link);
+  color: var(--text-dark);
   font-weight: 500;
-  transition: color 0.3s;
-  text-decoration: none;
-  font-size: 1rem;
+  padding: 0.5rem;
+  position: relative;
+}
+
+.footer-links a::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 1px;
+  background: var(--accent);
+  transition: all var(--transition-fast);
+  transform: translateX(-50%);
 }
 
 .footer-links a:hover {
   color: var(--accent);
-  text-decoration: underline;
+}
+.footer-links a:hover::after {
+  width: 100%;
 }
 
 .copyright {
   margin-top: 2rem;
-  color: var(--footer-link);
+  color: var(--text-dark);
   font-size: 0.9rem;
 }
 
 /* Responsive Design */
+@media (max-width: 992px) {
+  header {
+    padding: 1.2rem 2rem;
+  }
+  
+  nav ul {
+    gap: 2rem;
+  }
+  
+  main {
+    padding: 2rem;
+  }
+  
+  .section {
+    padding: 2rem;
+  }
+}
+
 @media (max-width: 768px) {
   header { 
-    padding: 1.2rem;
     flex-direction: column;
     text-align: center;
+    padding: 1.2rem;
   }
   
   nav ul {
     margin-top: 1.5rem;
-    gap: 1.8rem;
+    gap: 1.5rem;
     flex-wrap: wrap;
     justify-content: center;
   }
   
   header::after {
-    right: 25px;
-    top: 25px;
+    right: 20px;
+    top: 20px;
     font-size: 1.6rem;
-  }
-  
-  main {
-    padding: 1.5rem;
-  }
-  
-  .section-box {
-    padding: 1.8rem;
   }
   
   .grid {
     grid-template-columns: 1fr;
-    gap: 1.8rem;
+    gap: 2rem;
   }
   
   .footer-links {
-    flex-direction: column;
-    gap: 1rem;
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .section {
+    padding: 1.5rem;
+  }
+  
+  .btn {
+    width: 100%;
+    padding: 0.8rem;
+  }
+  
+  .tabs {
+    flex-wrap: wrap;
+  }
+  
+  .tab-btn {
+    flex: 1 0 auto;
+    text-align: center;
+    padding: 0.8rem;
   }
 }
