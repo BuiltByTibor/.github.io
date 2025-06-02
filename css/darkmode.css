@@ -1,10 +1,78 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --primary-color: #1a1a2e;
-    --text-color: #f1f1f1;
+    --text-color: #f1f1f1;  /* Fixed the color value */
     --light-color: #16213e;
+    --secondary-color: #4a89dc;
+    --flashcard-front: #2980b9;
+    --flashcard-back: #1a5276;
   }
+  #dark-mode-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+  padding: 0.5rem;
+  margin-left: 1rem;
+}
+
+.dark-icon {
+  display: none;
+}
+
+/* Dark mode styles when manually toggled */
+.dark-mode {
+  --primary-color: #1a1a2e;
+  --text-color: #f1f1f1;
+  --light-color: #16213e;
+  --secondary-color: #4a89dc;
+  --flashcard-front: #2980b9;
+  --flashcard-back: #1a5276;
+}
+
+.dark-mode body {
+  background: #0f0f0f;
+}
+
+.dark-mode .point,
+.dark-mode .module-card,
+.dark-mode .topic-card,
+.dark-mode .tab-content {
+  background: #1e272e;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.dark-mode .question {
+  background: #2d3436;
+}
+
+.dark-mode .solution {
+  background: #2c3e50;
+}
+
+.dark-mode .light-icon {
+  display: none;
+}
+
+.dark-mode .dark-icon {
+  display: inline;
+}
+  
   body {
     background: #0f0f0f;
+  }
+  
+  /* Dark mode specific adjustments */
+  .point, .module-card, .topic-card, .tab-content {
+    background: #1e272e;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  }
+  
+  .question {
+    background: #2d3436;
+  }
+  
+  .solution {
+    background: #2c3e50;
   }
 }
