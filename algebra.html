@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Algebra - Educational Resource</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <a href="index.html" class="logo">Edu<span>Resource</span></a>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="modules.html">Modules</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <h1>Algebra</h1>
+        </section>
+
+        <section class="topic-sections">
+            <div class="section-tabs">
+                <button class="tab-btn active" data-tab="overview">Overview</button>
+                <button class="tab-btn" data-tab="practice">Practice Questions</button>
+                <button class="tab-btn" data-tab="flashcards">Flashcards</button>
+            </div>
+
+            <div id="overview" class="tab-content active">
+                <h2>Algebra Overview</h2>
+                <p>Algebra is a branch of mathematics dealing with symbols and the rules for manipulating those symbols. In elementary algebra, those symbols represent quantities without fixed values, known as variables.</p>
+                <h3>Key Concepts:</h3>
+                <ul>
+                    <li>Variables and expressions</li>
+                    <li>Equations and inequalities</li>
+                    <li>Functions</li>
+                    <li>Polynomials</li>
+                    <li>Graphing</li>
+                </ul>
+            </div>
+
+            <div id="practice" class="tab-content">
+                <h2>Practice Questions</h2>
+                <div class="question">
+                    <p>1. Solve for x: 2x + 5 = 15</p>
+                    <input type="text" class="answer-input" data-answer="5">
+                    <button class="check-answer">Check Answer</button>
+                    <div class="solution hidden">
+                        <p><strong>Solution:</strong> Subtract 5 from both sides: 2x = 10. Then divide both sides by 2: x = 5.</p>
+                    </div>
+                </div>
+                <div class="question">
+                    <p>2. Simplify: 3(x + 4) - 2x</p>
+                    <input type="text" class="answer-input" data-answer="x+12">
+                    <button class="check-answer">Check Answer</button>
+                    <div class="solution hidden">
+                        <p><strong>Solution:</strong> Distribute the 3: 3x + 12 - 2x. Combine like terms: x + 12.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="flashcards" class="tab-content">
+                <h2>Algebra Flashcards</h2>
+                <div class="flashcard-controls">
+                    <button id="start-flashcards" class="btn">Start Flashcards</button>
+                    <div class="difficulty-btns hidden">
+                        <button class="difficulty-btn easy">Easy</button>
+                        <button class="difficulty-btn medium">Medium</button>
+                        <button class="difficulty-btn hard">Hard</button>
+                    </div>
+                </div>
+                
+                <div class="flashcard-container hidden">
+                    <div class="flashcard">
+                        <div class="flashcard-front">
+                            <p>What is the solution to 3x - 7 = 14?</p>
+                        </div>
+                        <div class="flashcard-back">
+                            <p>x = 7</p>
+                        </div>
+                    </div>
+                    <div class="flashcard">
+                        <div class="flashcard-front">
+                            <p>What is the slope of y = 2x + 3?</p>
+                        </div>
+                        <div class="flashcard-back">
+                            <p>2</p>
+                        </div>
+                    </div>
+                    <div class="flashcard">
+                        <div class="flashcard-front">
+                            <p>Factor x² - 4</p>
+                        </div>
+                        <div class="flashcard-back">
+                            <p>(x + 2)(x - 2)</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="flashcard-completion hidden">
+                    <h3>All flashcards completed!</h3>
+                    <p>Refresh the page to practice again.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="social-links">
+            <a href="#" class="social-icon">GitHub</a>
+            <a href="#" class="social-icon">LinkedIn</a>
+            <a href="#" class="social-icon">Twitter</a>
+            <a href="mailto:your-email@example.com" class="social-icon">Email</a>
+        </div>
+        <p>&copy; 2023 Educational Resource. All rights reserved.</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
