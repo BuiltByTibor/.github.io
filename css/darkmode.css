@@ -75,4 +75,36 @@
   .solution {
     background: #2c3e50;
   }
+
+/* Adjust text contrast in dark mode */
+.dark-mode, .dark-mode a {
+  color: #f1f1f1;
+}
+
+.dark-mode .subtitle {
+  opacity: 0.8;
+}
+
+/* Dark mode for input fields */
+.dark-mode input, .dark-mode .answer-input {
+  background: #2d3436;
+  color: #f1f1f1;
+  border-color: #555;
+}
+
+/* Dark mode for buttons */
+.dark-mode .btn {
+  background: var(--secondary-color);
+  color: white;
+}
+
+/* Dark mode for flashcard front */
+.dark-mode .flashcard-front {
+  background: var(--flashcard-front);
+}
+
+/* Dark mode for flashcard back */
+.dark-mode .flashcard-back {
+  background: var(--flashcard-back);
+}
 }
