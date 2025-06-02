@@ -13,6 +13,39 @@
     --text-color: #333;
     --text-light: #fff;
 }
+/* Tips Dropdown */
+.tips-trigger {
+  position: relative;
+}
+
+.tips-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: var(--primary-color);
+  color: white;
+  padding: 1rem;
+  border-radius: 0 0 8px 8px;
+  width: 200px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  display: none;
+  z-index: 100;
+}
+
+.tips-trigger:hover .tips-dropdown {
+  display: block;
+  animation: fadeIn 0.3s ease;
+}
+
+.tips-dropdown p {
+  margin: 0.5rem 0;
+  font-size: 0.9rem;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
 /* Mechanical Design Elements */
 :root {
   --gear-size: 50px;
