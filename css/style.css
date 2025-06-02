@@ -1,76 +1,45 @@
-/* Base Styles */
+/* Base Styles - Sage Green Mechanical Engineering Theme */
 :root {
-    /* Sage Green Dominant Palette - Improved Contrast */
-    --primary-color: #f8f9fa;        /* Light cream background */
-    --secondary-color: #6b8e23;      /* More vibrant sage green (better contrast) */
-    --accent-color: #556b2f;         /* Darker olive green */
-    --light-color: #f0f0f0;          /* Brighter light gray */
-    --dark-color: #2a3a1f;           /* Dark forest green */
-    
-    /* Status Colors */
-    --success-color: #4c7a5d;        /* Deep sage */
-    --warning-color: #b5a642;        /* Mustard yellow */
-    --danger-color: #a63d40;         /* Earthy red */
-    
-    /* Flashcard Colors - Improved Contrast */
-    --flashcard-front: #d4e6b5;      /* Pale sage front */
-    --flashcard-back: #a3b899;       /* Muted sage back */
-    
-    /* Text Colors - Enhanced Contrast */
-    --text-color: #2a2a2a;           /* Darker black for better readability */
-    --text-light: #ffffff;           /* Pure white for contrast */
-    
-    /* New Complementary Colors */
-    --panel-color: #f1f7e8;          /* Very light sage */
-    --border-color: #c1c9b8;         /* Soft green-gray */
-    --hover-color: #7a9a5a;          /* More vibrant medium sage */
-    
-    /* Mechanical Elements */
+    --primary-color: #354f52; /* Dark sage green */
+    --secondary-color: #588157; /* Medium sage green */
+    --accent-color: #a5a58d; /* Light sage */
+    --light-color: #dad7cd; /* Very light sage */
+    --dark-color: #1a2e2a; /* Very dark green */
+    --success-color: #588157; /* Sage green */
+    --warning-color: #bc6c25; /* Rust orange */
+    --danger-color: #9e2a2b; /* Dark red */
+    --flashcard-front: #3a5a40; /* Dark sage */
+    --flashcard-back: #2d3e36; /* Darker sage */
+    --text-color: #dad7cd; /* Light text */
+    --text-light: #ffffff; /* White */
+    --bolt-color: #6b8e7d; /* Muted sage */
     --gear-size: 50px;
-    --bolt-color: #95a5a6;
+    --panel-color: #2d3e36; /* Dark panel */
+    --pipe-color: #3a5a40; /* Pipe color */
+    --gauge-color: #354f52; /* Gauge color */
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
+/* Mechanical Blueprint Background */
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
     color: var(--text-color);
-    background-color: #f5f5f5;
+    background-color: var(--dark-color);
     background-image: 
-        linear-gradient(rgba(100, 150, 255, 0.08) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(100, 150, 255, 0.08) 1px, transparent 1px);
-    background-size: 40px 40px;
-}
-
-/* Improved Text Contrast */
-h1, h2, h3, h4, h5, h6 {
-    color: var(--dark-color);
-    font-weight: 600;
-}
-
-p, li {
-    color: var(--text-color);
-    line-height: 1.7;
+        linear-gradient(rgba(88, 129, 87, 0.1) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(88, 129, 87, 0.1) 1px, transparent 1px),
+        radial-gradient(circle at center, var(--primary-color) 0%, #000000 100%);
+    background-size: 40px 40px, 40px 40px, cover;
 }
 
 a {
     text-decoration: none;
     color: var(--secondary-color);
-    transition: color 0.3s;
 }
 
-a:hover {
-    color: var(--accent-color);
-}
-
-/* Header Styles */
+/* Industrial Header with Moving Gears */
 header {
-    background-color: var(--dark-color);
+    background-color: var(--primary-color);
     color: var(--text-light);
     padding: 1rem 2rem;
     display: flex;
@@ -78,19 +47,27 @@ header {
     align-items: center;
     position: relative;
     overflow: hidden;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    border-bottom: 2px solid var(--secondary-color);
+}
+
+header::before, header::after {
+    content: "⚙️";
+    position: absolute;
+    font-size: var(--gear-size);
+    opacity: 0.2;
+    animation: spin 20s linear infinite;
+    z-index: 0;
 }
 
 header::before {
-    content: "⚙️⚙️";
-    position: absolute;
-    right: -20px;
-    top: 50%;
-    transform: translateY(-50%) rotate(0deg);
-    font-size: var(--gear-size);
-    opacity: 0.15;
-    animation: spin 20s linear infinite;
-    z-index: 0;
+    right: 30px;
+    top: 15px;
+    animation-direction: reverse;
+}
+
+header::after {
+    right: 70px;
+    top: 35px;
 }
 
 .logo {
@@ -99,7 +76,6 @@ header::before {
     color: var(--text-light);
     position: relative;
     z-index: 1;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
 }
 
 .logo span {
@@ -120,173 +96,219 @@ nav ul li {
 nav ul li a {
     color: var(--text-light);
     font-weight: 500;
-    padding: 0.5rem 0;
-    border-bottom: 2px solid transparent;
-    transition: all 0.3s;
+    transition: color 0.3s;
 }
 
 nav ul li a:hover {
-    color: var(--secondary-color);
-    border-bottom-color: var(--secondary-color);
+    color: var(--accent-color);
 }
 
-/* Main Content Styles */
+/* Main Content */
 main {
     padding: 2rem;
     max-width: 1200px;
     margin: 0 auto;
-    background-color: var(--primary-color);
-    box-shadow: 0 0 20px rgba(0,0,0,0.05);
-    border-radius: 8px;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
 }
 
-.hero {
-    text-align: center;
-    padding: 3rem 2rem;
-    background: linear-gradient(135deg, var(--dark-color), var(--secondary-color));
-    color: var(--text-light);
-    border-radius: 8px;
-    margin-bottom: 2rem;
+/* Industrial Panel Cards */
+.module-card, .topic-card, .point, .tab-content, .question {
+    background: var(--panel-color);
+    border: 1px solid var(--pipe-color);
+    position: relative;
+    transition: transform 0.3s;
 }
 
-.hero h1 {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-    color: var(--text-light);
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
-}
-
-.hero .subtitle {
-    font-size: 1.2rem;
-    opacity: 0.9;
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-/* Cards and Sections */
-.point, .module-card, .topic-card {
-    background: var(--text-light);
-    padding: 1.5rem;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s;
-    border-left: 4px solid var(--secondary-color);
-}
-
-.point:hover, .module-card:hover, .topic-card:hover {
+.module-card:hover, .topic-card:hover, .point:hover {
     transform: translateY(-5px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
-.point h2, .module-card h2, .topic-card h2 {
-    color: var(--dark-color);
-    margin-bottom: 1rem;
-    font-size: 1.4rem;
+/* Screw Head Corners */
+.module-card::before, .topic-card::before, .point::before {
+    content: "";
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--bolt-color) 30%, transparent 31%);
+    background-size: 5px 5px;
+    box-shadow: inset 0 0 0 2px var(--bolt-color);
 }
 
-/* Buttons */
-.btn {
-    display: inline-block;
-    background: var(--secondary-color);
-    color: var(--text-light);
-    padding: 0.7rem 1.5rem;
-    border-radius: 4px;
-    font-weight: 600;
-    transition: all 0.3s;
-    border: none;
-    cursor: pointer;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
+.module-card::before { top: 5px; left: 5px; }
+.topic-card::before { top: 5px; right: 5px; }
+.point::before { bottom: 5px; left: 5px; }
 
-.btn:hover {
-    background: var(--accent-color);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-}
-
-/* Tab System */
-.tab-content {
-    background: var(--text-light);
-    color: var(--text-color);
-    border: 1px solid var(--border-color);
-    border-top: none;
-    padding: 1.5rem;
-    border-radius: 0 0 8px 8px;
-}
-
-.tab-btn.active {
-    color: var(--dark-color);
-    background: var(--text-light);
-    border-color: var(--border-color);
-    border-bottom-color: transparent;
-}
-
-/* Flashcards - Improved Contrast */
-.flashcard-front, .flashcard-back {
-    color: var(--dark-color);
-    font-weight: 500;
-}
-
-.flashcard-front {
-    background-color: var(--flashcard-front);
-}
-
-.flashcard-back {
-    background-color: var(--flashcard-back);
-}
-
-/* Footer */
-footer {
-    background-color: var(--dark-color);
-    color: var(--text-light);
-    padding: 2rem;
+/* Page Header */
+.page-header {
     text-align: center;
+    padding: 2rem 0;
+    margin-bottom: 2rem;
+    border-bottom: 2px solid var(--secondary-color);
+}
+
+.page-header h1 {
+    color: var(--light-color);
+    font-size: 2.2rem;
+}
+
+/* Modules Grid */
+.modules-grid, .topics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
     margin-top: 2rem;
 }
 
-footer a {
+.module-card, .topic-card {
+    padding: 1.5rem;
+    border-radius: 4px;
+    border-left: 4px solid var(--secondary-color);
+}
+
+.module-card h2, .topic-card h2 {
+    color: var(--light-color);
+    margin-bottom: 0.5rem;
+}
+
+.module-card p, .topic-card p {
+    margin-bottom: 1rem;
+    color: var(--text-color);
+}
+
+/* Industrial Buttons */
+.btn {
+    display: inline-block;
+    background: linear-gradient(to bottom, var(--primary-color), var(--dark-color));
+    color: var(--text-light);
+    padding: 0.6rem 1.2rem;
+    border-radius: 4px;
+    font-weight: 500;
+    border: 1px solid var(--pipe-color);
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn:hover {
+    background: linear-gradient(to bottom, var(--secondary-color), var(--primary-color));
+}
+
+/* Technical Tabs */
+.section-tabs {
+    border-bottom: 2px solid var(--pipe-color);
+}
+
+.tab-btn {
+    background: linear-gradient(to bottom, var(--dark-color), var(--primary-color));
+    border: 1px solid var(--pipe-color);
+    border-bottom: none;
+    color: var(--text-color);
+    margin-right: 5px;
+}
+
+.tab-btn.active {
+    background: var(--panel-color);
     color: var(--secondary-color);
+    border-top: 2px solid var(--secondary-color);
 }
 
-/* Animations */
+/* Pipe Connections */
+.tab-content::before {
+    content: "";
+    position: absolute;
+    top: -10px;
+    left: 20px;
+    width: 20px;
+    height: 10px;
+    border-left: 2px solid var(--secondary-color);
+    border-right: 2px solid var(--secondary-color);
+}
+
+/* LED Indicator */
+.active-indicator {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: var(--secondary-color);
+    margin-right: 8px;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { opacity: 0.5; }
+    50% { opacity: 1; }
+    100% { opacity: 0.5; }
+}
+
+/* Circuit Board Footer */
+footer {
+    background-color: var(--primary-color);
+    border-top: 3px solid var(--secondary-color);
+    position: relative;
+    padding: 1rem;
+    text-align: center;
+    color: var(--text-light);
+}
+
+footer::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--secondary-color), transparent);
+}
+
+/* Animation Keyframes */
 @keyframes spin {
-    from { transform: translateY(-50%) rotate(0deg); }
-    to { transform: translateY(-50%) rotate(360deg); }
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
 }
 
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(-10px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-/* Responsive Design */
+/* Responsive Adjustments */
 @media (max-width: 768px) {
     header {
         flex-direction: column;
-        text-align: center;
+        padding: 1rem;
     }
 
     nav ul {
         margin-top: 1rem;
-        justify-content: center;
     }
 
-    .hero h1 {
-        font-size: 2rem;
+    nav ul li {
+        margin-left: 1rem;
+    }
+
+    header::before, header::after {
+        display: none;
+    }
+
+    .section-tabs {
+        flex-wrap: wrap;
+    }
+
+    .tab-btn {
+        flex: 1 0 auto;
+        padding: 0.8rem;
+        font-size: 0.9rem;
     }
 }
 
 @media (max-width: 480px) {
-    .hero h1 {
-        font-size: 1.8rem;
+    .module-card, .topic-card, .point {
+        padding: 1rem;
     }
-    
-    nav ul {
-        flex-direction: column;
-        gap: 0.5rem;
+}
+
+@media (max-width: 1240px) {
+    header, footer, main {
+        padding-left: 20px;
+        padding-right: 20px;
     }
+}
     
     nav ul li {
         margin-left: 0;
