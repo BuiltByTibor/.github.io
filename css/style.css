@@ -1,19 +1,19 @@
-/* Mechanical Engineering Theme - Sage Green Industrial */
+/* Mechanical Engineering Theme - Blue Industrial */
 :root {
-  /* Color Palette */
-  --primary: #354f52;       /* Dark sage green */
-  --secondary: #588157;     /* Medium sage green */
-  --accent: #a5a58d;       /* Light sage */
-  --light: #dad7cd;        /* Very light sage */
-  --dark: #1a2e2a;         /* Very dark green */
-  --success: #588157;      /* Sage green */
-  --warning: #bc6c25;      /* Rust orange */
-  --danger: #9e2a2b;       /* Dark red */
-  --text: #dad7cd;         /* Light text */
-  --text-dark: #8b9e8a;    /* Darker text for footers */
-  --panel: #2d3e36;        /* Dark panel background */
-  --pipe: #3a5a40;        /* Pipe/mechanical accent color */
-  --bolt: #6b8e7d;        /* Bolt/screw color */
+  /* Blue Color Palette */
+  --primary: #1a2e40;       /* Dark navy blue */
+  --secondary: #2c5f8b;     /* Medium steel blue */
+  --accent: #4db8ff;       /* Light electric blue */
+  --light: #e6f2ff;        /* Very light blue */
+  --dark: #0d1a26;         /* Very dark navy */
+  --success: #2ecc71;      /* Green */
+  --warning: #f39c12;      /* Orange */
+  --danger: #e74c3c;       /* Red */
+  --text: #e6f2ff;         /* Light text */
+  --text-dark: #95a5a6;    /* Darker text for footers */
+  --panel: #2c3e50;        /* Dark panel background */
+  --pipe: #3a5a80;        /* Pipe/mechanical accent color */
+  --bolt: #95a5a6;        /* Bolt/screw color */
   
   /* Sizing */
   --gear-size: 2rem;
@@ -40,8 +40,8 @@ body {
   background-color: var(--dark);
   background-image: 
     /* Blueprint grid */
-    linear-gradient(rgba(88, 129, 87, 0.1) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(88, 129, 87, 0.1) 1px, transparent 1px),
+    linear-gradient(rgba(0, 150, 255, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 150, 255, 0.1) 1px, transparent 1px),
     /* Subtle radial gradient */
     radial-gradient(circle at 10% 20%, var(--primary) 0%, transparent 20%),
     radial-gradient(circle at 90% 80%, var(--primary) 0%, transparent 20%);
@@ -52,25 +52,6 @@ body {
   display: flex;
   flex-direction: column;
 }
-
-/* Typography */
-h1, h2, h3, h4 {
-  font-weight: 700;
-  line-height: 1.2;
-  margin-top: 0;
-}
-
-h1 { font-size: 2.5rem; }
-h2 { font-size: 2rem; }
-h3 { font-size: 1.75rem; }
-h4 { font-size: 1.5rem; }
-
-a {
-  color: var(--secondary);
-  text-decoration: none;
-  transition: color var(--transition-fast);
-}
-a:hover { color: var(--accent); }
 
 /* Header with Animated Gear */
 header {
@@ -101,20 +82,34 @@ header::after {
   to { transform: rotate(360deg); }
 }
 
-.logo {
-  font-size: 1.8rem;
-  font-weight: 800;
-  letter-spacing: 1px;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-.logo span { 
-  color: var(--secondary);
-  font-weight: 900;
+/* Box Styling */
+.box {
+  background: var(--panel);
+  border: var(--border-thin) solid var(--pipe);
+  border-radius: var(--border-radius);
+  padding: 2rem;
+  margin-bottom: 2rem;
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-med);
+  position: relative;
+  overflow: hidden;
 }
 
-/* Navigation with Enhanced Hover Effects */
+.box:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--accent);
+}
+
+.box-title {
+  color: var(--accent);
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: var(--border-thin) solid var(--pipe);
+}
+
+/* Enhanced Navigation */
 nav ul {
   display: flex;
   gap: 3rem;
@@ -129,11 +124,9 @@ nav a {
   font-weight: 600;
   padding: 0.75rem 0;
   position: relative;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
 }
 
-nav a::before {
+nav a::after {
   content: "";
   position: absolute;
   bottom: 0;
@@ -144,7 +137,7 @@ nav a::before {
   transition: width var(--transition-med);
 }
 
-nav a:hover::before {
+nav a:hover::after {
   width: 100%;
 }
 
@@ -155,66 +148,6 @@ main {
   margin: 0 auto;
   width: 100%;
   flex: 1;
-}
-
-/* Section Styling with Industrial Flair */
-.section {
-  background: var(--panel);
-  border: var(--border-thin) solid var(--pipe);
-  border-radius: var(--border-radius);
-  padding: 2.5rem;
-  margin-bottom: 3rem;
-  box-shadow: var(--shadow-sm);
-  transition: all var(--transition-med);
-  position: relative;
-  overflow: hidden;
-}
-
-.section::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 4px;
-  height: 100%;
-  background: var(--secondary);
-  transform: scaleY(0);
-  transform-origin: bottom;
-  transition: transform var(--transition-slow);
-}
-
-.section:hover {
-  transform: translateY(-5px);
-  box-shadow: var(--shadow-lg);
-}
-.section:hover::before {
-  transform: scaleY(1);
-}
-
-/* Section Titles with Underline Accent */
-.section-title {
-  position: relative;
-  padding-bottom: 1rem;
-  margin-bottom: 2rem;
-}
-
-.section-title::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 60px;
-  height: 3px;
-  background: var(--secondary);
-  border-radius: 3px;
-}
-
-/* Grid System for Cards */
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2.5rem;
-  margin: 2.5rem 0;
 }
 
 /* Card Design with Screw Details */
@@ -256,7 +189,15 @@ main {
   border-color: var(--secondary);
 }
 
-/* Buttons with Industrial Feel */
+/* Grid System */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2.5rem;
+  margin: 2.5rem 0;
+}
+
+/* Buttons */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -267,83 +208,16 @@ main {
   border: var(--border-thin) solid var(--pipe);
   border-radius: var(--border-radius);
   font-weight: 600;
-  letter-spacing: 0.5px;
   transition: all var(--transition-med);
   cursor: pointer;
   position: relative;
   overflow: hidden;
-  z-index: 1;
-}
-
-.btn::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 0;
-  height: 100%;
-  background: var(--secondary);
-  transition: width var(--transition-med);
-  z-index: -1;
 }
 
 .btn:hover {
-  color: var(--light);
+  background: var(--secondary);
   transform: translateY(-3px);
   box-shadow: var(--shadow-md);
-}
-.btn:hover::before {
-  width: 100%;
-}
-
-/* Tab System */
-.tabs {
-  display: flex;
-  border-bottom: var(--border-thick) solid var(--pipe);
-  margin-bottom: 1.5rem;
-}
-
-.tab-btn {
-  background: var(--dark);
-  border: var(--border-thin) solid var(--pipe);
-  border-bottom: none;
-  padding: 0.8rem 1.5rem;
-  margin-right: 0.5rem;
-  cursor: pointer;
-  transition: all var(--transition-fast);
-  position: relative;
-}
-
-.tab-btn.active {
-  background: var(--panel);
-  color: var(--secondary);
-  font-weight: 600;
-}
-
-.tab-btn.active::after {
-  content: "";
-  position: absolute;
-  bottom: -2px;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background: var(--secondary);
-}
-
-.tab-content {
-  display: none;
-  padding: 1.5rem;
-  background: var(--panel);
-  border-radius: 0 0 var(--border-radius) var(--border-radius);
-}
-.tab-content.active {
-  display: block;
-  animation: fadeIn 0.5s ease;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
 }
 
 /* Footer with Circuit Board Style */
@@ -357,84 +231,7 @@ footer {
   position: relative;
 }
 
-/* Circuit board lines */
-footer::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: linear-gradient(90deg, 
-    transparent, 
-    var(--secondary), 
-    transparent);
-}
-
-.footer-content {
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.footer-links {
-  display: flex;
-  justify-content: center;
-  gap: 3rem;
-  margin: 2rem 0;
-  flex-wrap: wrap;
-}
-
-.footer-links a {
-  color: var(--text-dark);
-  font-weight: 500;
-  padding: 0.5rem;
-  position: relative;
-}
-
-.footer-links a::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  width: 0;
-  height: 1px;
-  background: var(--accent);
-  transition: all var(--transition-fast);
-  transform: translateX(-50%);
-}
-
-.footer-links a:hover {
-  color: var(--accent);
-}
-.footer-links a:hover::after {
-  width: 100%;
-}
-
-.copyright {
-  margin-top: 2rem;
-  color: var(--text-dark);
-  font-size: 0.9rem;
-}
-
 /* Responsive Design */
-@media (max-width: 992px) {
-  header {
-    padding: 1.2rem 2rem;
-  }
-  
-  nav ul {
-    gap: 2rem;
-  }
-  
-  main {
-    padding: 2rem;
-  }
-  
-  .section {
-    padding: 2rem;
-  }
-}
-
 @media (max-width: 768px) {
   header { 
     flex-direction: column;
@@ -449,38 +246,15 @@ footer::before {
     justify-content: center;
   }
   
-  header::after {
-    right: 20px;
-    top: 20px;
-    font-size: 1.6rem;
-  }
-  
   .grid {
     grid-template-columns: 1fr;
     gap: 2rem;
   }
   
-  .footer-links {
-    gap: 1.5rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .section {
+  .box {
     padding: 1.5rem;
   }
-  
-  .btn {
-    width: 100%;
-    padding: 0.8rem;
-  }
-  
-  .tabs {
-    flex-wrap: wrap;
-  }
-  
-  .tab-btn {
-    flex: 1 0 auto;
+}
     text-align: center;
     padding: 0.8rem;
   }
