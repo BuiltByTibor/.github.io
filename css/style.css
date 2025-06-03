@@ -1,261 +1,735 @@
-/* Mechanical Engineering Theme - Blue Industrial */
+Base Styles */Add commentMore actions
+/* Dark Mechanical Engineering Theme */
 :root {
-  /* Blue Color Palette */
-  --primary: #1a2e40;       /* Dark navy blue */
-  --secondary: #2c5f8b;     /* Medium steel blue */
-  --accent: #4db8ff;       /* Light electric blue */
-  --light: #e6f2ff;        /* Very light blue */
-  --dark: #0d1a26;         /* Very dark navy */
-  --success: #2ecc71;      /* Green */
-  --warning: #f39c12;      /* Orange */
-  --danger: #e74c3c;       /* Red */
-  --text: #e6f2ff;         /* Light text */
-  --text-dark: #95a5a6;    /* Darker text for footers */
-  --panel: #2c3e50;        /* Dark panel background */
-  --pipe: #3a5a80;        /* Pipe/mechanical accent color */
-  --bolt: #95a5a6;        /* Bolt/screw color */
-  
-  /* Sizing */
-  --gear-size: 2rem;
-  --border-radius: 6px;
-  --border-thick: 2px;
-  --border-thin: 1px;
-  
-  /* Shadows */
-  --shadow-sm: 0 2px 8px rgba(0,0,0,0.1);
-  --shadow-md: 0 4px 12px rgba(0,0,0,0.15);
-  --shadow-lg: 0 8px 20px rgba(0,0,0,0.2);
-  
-  /* Transitions */
-  --transition-fast: 0.2s ease;
-  --transition-med: 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-  --transition-slow: 0.4s ease-out;
+    --primary-color: #2c3e50;
+    --secondary-color: #3498db;
+    --accent-color: #e74c3c;
+    --light-color: #ecf0f1;
+    --dark-color: #2c3e50;
+    --primary-color: #1a1a2e;
+    --secondary-color: #4db8ff;
+    --accent-color: #ff4d4d;
+    --light-color: #e6e6e6;
+    --dark-color: #121212;
+    --success-color: #2ecc71;
+    --warning-color: #f39c12;
+    --danger-color: #e74c3c;
+    --flashcard-front: #3498db;
+    --flashcard-back: #2980b9;
+    --text-color: #333;
+    --text-light: #fff;
 }
-
-/* Base Styles */
-body {
-  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-  line-height: 1.6;
-  color: var(--text);
-  background-color: var(--dark);
-  background-image: 
-    /* Blueprint grid */
-    linear-gradient(rgba(0, 150, 255, 0.1) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 150, 255, 0.1) 1px, transparent 1px),
-    /* Subtle radial gradient */
-    radial-gradient(circle at 10% 20%, var(--primary) 0%, transparent 20%),
-    radial-gradient(circle at 90% 80%, var(--primary) 0%, transparent 20%);
-  background-size: 40px 40px, 40px 40px, 500px 500px, 500px 500px;
-  background-attachment: fixed;
-  margin: 0;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
-/* Header with Animated Gear */
-header {
-  background: var(--primary);
-  color: var(--light);
-  padding: 1.5rem 3rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: var(--border-thick) solid var(--secondary);
-  position: relative;
-  z-index: 100;
-  box-shadow: var(--shadow-sm);
-}
-
-/* Animated gear icon */
-header::after {
-  content: "⚙";
+/* Screw heads in corners */
+.module-card::before {
+  content: "";
   position: absolute;
-  right: 40px;
-  font-size: var(--gear-size);
-  opacity: 0.3;
-  animation: spin 12s linear infinite;
-  filter: drop-shadow(0 0 2px rgba(0,0,0,0.3));
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--bolt-color) 30%, transparent 31%);
+  background-size: 5px 5px;
+  box-shadow: inset 0 0 0 2px var(--bolt-color);
 }
 
-@keyframes spin {
-  to { transform: rotate(360deg); }
+.module-card::before {
+  top: 5px;
+  left: 5px;
 }
 
-/* Box Styling */
-.box {
-  background: var(--panel);
-  border: var(--border-thin) solid var(--pipe);
-  border-radius: var(--border-radius);
-  padding: 2rem;
-  margin-bottom: 2rem;
-  box-shadow: var(--shadow-sm);
-  transition: all var(--transition-med);
-  position: relative;
-  overflow: hidden;
-}
-
-.box:hover {
-  transform: translateY(-5px);
-  box-shadow: var(--shadow-lg);
-  border-color: var(--accent);
-}
-
-.box-title {
-  color: var(--accent);
-  font-size: 1.5rem;
-  margin-bottom: 1.5rem;
-  padding-bottom: 0.5rem;
-  border-bottom: var(--border-thin) solid var(--pipe);
-}
-
-/* Enhanced Navigation */
-nav ul {
-  display: flex;
-  gap: 3rem;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-nav a {
-  color: var(--light);
-  font-size: 1.1rem;
-  font-weight: 600;
-  padding: 0.75rem 0;
+/* Ruler-like borders */
+.tab-content {
+  border-top: 1px solid #ddd;
+  border-left: 1px solid #ddd;
   position: relative;
 }
 
-nav a::after {
+.tab-content::after {
   content: "";
   position: absolute;
   bottom: 0;
+  right: 0;
+  width: calc(100% - 2px);
+  height: calc(100% - 2px);
+  border-right: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  pointer-events: none;
+}
+/* Tips Dropdown */
+.tips-trigger {
+  position: relative;
+}
+
+.tips-dropdown {
+  position: absolute;
+  top: 100%;
   left: 0;
-  width: 0;
-  height: 2px;
-  background: var(--accent);
-  transition: width var(--transition-med);
+  background: var(--primary-color);
+  color: white;
+  padding: 1rem;
+  border-radius: 0 0 8px 8px;
+  width: 200px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  display: none;
+  z-index: 100;
 }
 
-nav a:hover::after {
-  width: 100%;
+.tips-trigger:hover .tips-dropdown {
+  display: block;
+  animation: fadeIn 0.3s ease;
 }
 
-/* Main Content Layout */
-main {
-  padding: 3rem;
-  max-width: 1400px;
-  margin: 0 auto;
-  width: 100%;
-  flex: 1;
+.tips-dropdown p {
+  margin: 0.5rem 0;
+  font-size: 0.9rem;
 }
 
-/* Card Design with Screw Details */
-.card {
-  background: var(--panel);
-  border: var(--border-thin) solid var(--pipe);
-  border-radius: var(--border-radius);
-  padding: 2rem;
-  transition: all var(--transition-med);
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+/* Mechanical Design Elements */
+:root {
+  --gear-size: 50px;
+  --bolt-color: #95a5a6;
+}
+
+/* Gear decoration in header */
+header {
   position: relative;
   overflow: hidden;
 }
 
-/* Screw head corners */
-.card::before,
-.card::after {
-  content: "";
+header::before {
+  content: "⚙️⚙️";
   position: absolute;
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: radial-gradient(circle, var(--bolt) 40%, transparent 41%);
-  background-size: 6px 6px;
-  box-shadow: inset 0 0 0 2px var(--bolt);
+  right: -20px;
+  top: 50%;
+  transform: translateY(-50%) rotate(0deg);
+  font-size: var(--gear-size);
+  opacity: 0.15;
+  animation: spin 20s linear infinite;
+  z-index: 0;
 }
 
-.card::before {
-  top: 8px;
-  left: 8px;
-}
-.card::after {
-  bottom: 8px;
-  right: 8px;
+/* Bolt decoration on cards */
+.module-card, .topic-card {
+  position: relative;
 }
 
-.card:hover {
-  transform: translateY(-8px);
-  box-shadow: var(--shadow-lg);
-  border-color: var(--secondary);
+.module-card::after, .topic-card::after {
+  content: "⚡";
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  font-size: 1.5rem;
+  color: var(--bolt-color);
+  opacity: 0.7;
 }
 
-/* Grid System */
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2.5rem;
-  margin: 2.5rem 0;
+/* Blueprint-like grid background */
+body {
+  background-image: 
+    linear-gradient(rgba(200, 200, 255, 0.2) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(200, 200, 255, 0.2) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* Animation for gears */
+@keyframes spin {
+  from { transform: translateY(-50%) rotate(0deg); }
+  to { transform: translateY(-50%) rotate(360deg); }
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+    --flashcard-front: #2c3e50;
+    --flashcard-back: #1a252f;
+    --text-color: #e0e0e0;
+    --text-light: #ffffff;
+    --bolt-color: #95a5a6;
+    --gear-size: 50px;
+    --panel-color: #252525;
+    --gauge-color: #333;
+    --pipe-color: #4a4a4a;
+}
+
+/* Mechanical Blueprint Background */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: #f5f5f5;
+    background-color: var(--dark-color);
+    background-image: 
+        linear-gradient(rgba(0, 150, 255, 0.1) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 150, 255, 0.1) 1px, transparent 1px),
+        radial-gradient(circle at center, var(--primary-color) 0%, #000000 100%);
+    background-size: 40px 40px, 40px 40px, cover;
+}
+
+a {
+    text-decoration: none;
+    color: var(--secondary-color);
+}
+
+/* Header Styles */
+/* Industrial Header with Moving Gears */
+header {
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: var(--text-light);
+}
+
+.logo span {
+    color: var(--secondary-color);
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+}
+
+nav ul li {
+    margin-left: 1.5rem;
+}
+
+nav ul li a {
+    color: var(--text-light);
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: var(--secondary-color);
+}
+
+/* Main Content Styles */
+main {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto; /* Centers content with side gaps */
+}
+
+
+.hero {
+    text-align: center;
+    padding: 1rem calc((100% - 1200px) / 2);
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: var(--text-light);
+    border-radius: 8px;
+    margin-bottom: 2rem;
+}
+
+.hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    opacity: 0.9;
+}
+
+/* Points Grid */
+.points {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.point {
+    background: var(--text-light);
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    position: relative;
+    overflow: hidden;
+    border-bottom: 3px solid var(--secondary-color);
+}
+
+.point:hover {
+    transform: translateY(-5px);
+header::before, header::after {
+    content: "⚙️";
+    position: absolute;
+    font-size: var(--gear-size);
+    opacity: 0.2;
+    animation: spin 20s linear infinite;
+    z-index: 0;
+}
+
+.point h2 {
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+    font-size: 1.3rem;
+header::before {
+    right: 30px;
+    top: 15px;
+    animation-direction: reverse;
+}
+
+/* Page Header */
+.page-header {
+    text-align: center;
+    padding: 2rem 0;
+    margin-bottom: 2rem;
+    border-bottom: 2px solid var(--secondary-color);
+header::after {
+    right: 70px;
+    top: 35px;
+}
+
+.page-header h1 {
+    color: var(--primary-color);
+    font-size: 2.2rem;
+/* Industrial Panel Cards */
+.module-card, .topic-card, .point, .tab-content, .question {
+    background: var(--panel-color);
+    border: 1px solid var(--pipe-color);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3), 
+                inset 0 0 10px rgba(0, 0, 0, 0.2);
+    position: relative;
+}
+
+/* Modules Grid */
+.modules-grid, .topics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+/* Screw Head Corners */
+.module-card::before, .topic-card::before, .point::before {
+    content: "";
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--bolt-color) 30%, transparent 31%);
+    background-size: 5px 5px;
+    box-shadow: inset 0 0 0 2px var(--bolt-color);
+}
+
+.module-card, .topic-card {
+    background: var(--text-light);
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s;
+    border-left: 4px solid var(--secondary-color);
+}
+.module-card::before { top: 5px; left: 5px; }
+.topic-card::before { top: 5px; right: 5px; }
+.point::before { bottom: 5px; left: 5px; }
+
+.module-card:hover, .topic-card:hover {
+/* Pressure Gauge Effect on Hover */
+.module-card:hover, .topic-card:hover, .point:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.module-card h2, .topic-card h2 {
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.4), 
+                inset 0 0 15px rgba(0, 100, 255, 0.1);
+}
+
+.module-card p, .topic-card p {
+    margin-bottom: 1rem;
+    color: #666;
 }
 
 /* Buttons */
+/* Industrial Buttons */
 .btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--primary);
-  color: var(--light);
-  padding: 0.8rem 2rem;
-  border: var(--border-thin) solid var(--pipe);
-  border-radius: var(--border-radius);
-  font-weight: 600;
-  transition: all var(--transition-med);
-  cursor: pointer;
-  position: relative;
-  overflow: hidden;
+    display: inline-block;
+    background: var(--secondary-color);
+    background: linear-gradient(to bottom, #3a3a3a, #2a2a2a);
+    color: var(--text-light);
+    padding: 0.6rem 1.2rem;
+    border-radius: 4px;
+    font-weight: 500;
+    border: 1px solid var(--pipe-color);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
 }
 
 .btn:hover {
-  background: var(--secondary);
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-md);
+    background: #2980b9;
+    background: linear-gradient(to bottom, #4a4a4a, #3a3a3a);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
-/* Footer with Circuit Board Style */
+/* Tab System */
+.section-tabs {
+    display: flex;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid #ddd;
+}
+
+.tab-btn {
+    padding: 0.8rem 1.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #666;
+    position: relative;
+    transition: all 0.3s;
+}
+
+.tab-btn.active {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+.tab-btn.active::after {
+    content: '';
+.btn::after {
+    content: "";
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: var(--secondary-color);
+}
+
+.tab-content {
+    display: none;
+    padding: 1.5rem;
+    background: var(--text-light);
+    border-radius: 0 8px 8px 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* Practice Questions */
+.question {
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    background: #f9f9f9;
+    border-radius: 6px;
+    border-left: 3px solid var(--secondary-color);
+}
+
+.answer-input {
+    padding: 0.5rem;
+    margin: 0.5rem 0;
+    width: 100%;
+    max-width: 300px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    top: -50%;
+    right: -50%;
+    bottom: -50%;
+    left: -50%;
+    background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transform: rotateZ(60deg) translate(-5em, 7.5em);
+}
+
+.check-answer {
+    background: var(--secondary-color);
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 0.5rem;
+}
+
+.solution {
+    margin-top: 1rem;
+    padding: 1rem;
+    background: #e8f4fc;
+    border-radius: 4px;
+    display: none;
+.btn:hover::after {
+    animation: sheen 1.5s forwards;
+}
+
+.solution.show {
+    display: block;
+}
+
+.hidden {
+    display: none;
+/* Technical Tabs */
+.section-tabs {
+    border-bottom: 2px solid var(--pipe-color);
+}
+
+/* Flashcards */
+.flashcard-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+.tab-btn {
+    background: linear-gradient(to bottom, #2a2a2a, #1a1a1a);
+    border: 1px solid var(--pipe-color);
+    border-bottom: none;
+    color: var(--text-color);
+    margin-right: 5px;
+}
+
+.flashcard {
+    perspective: 1000px;
+    height: 200px;
+    cursor: pointer;
+.tab-btn.active {
+    background: var(--panel-color);
+    color: var(--secondary-color);
+    border-top: 2px solid var(--secondary-color);
+}
+
+/* Blueprint Flash Cards */
+.flashcard-front, .flashcard-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.6s;
+    background: linear-gradient(135deg, #2c3e50, #1a252f);
+    border: 1px solid var(--secondary-color);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.flashcard-front {
+    background-color: var(--flashcard-front);
+    color: var(--text-light);
+    transform: rotateY(0deg);
+/* Circuit Board Footer */
 footer {
-  background: var(--primary);
-  color: var(--light);
-  text-align: center;
-  padding: 3rem 2rem;
-  border-top: var(--border-thick) solid var(--secondary);
-  margin-top: 3rem;
-  position: relative;
+    background-color: var(--primary-color);
+    border-top: 3px solid var(--secondary-color);
+    position: relative;
+}
+
+.flashcard-back {
+    background-color: var(--flashcard-back);
+    color: var(--text-light);
+    transform: rotateY(180deg);
+footer::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--secondary-color), transparent);
+}
+
+.flashcard.flipped .flashcard-front {
+    transform: rotateY(180deg);
+/* Warning Panels */
+.solution {
+    background: #2a1e1e;
+    border-left: 3px solid var(--danger-color);
+}
+
+.flashcard.flipped .flashcard-back {
+    transform: rotateY(0deg);
+/* Animation Keyframes */
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.difficulty-btns {
+    margin-top: 1rem;
+    display: flex;
+    gap: 0.5rem;
+@keyframes sheen {
+    100% {
+        transform: rotateZ(60deg) translate(1em, -1em);
+    }
+}
+
+/* Additional Mechanical Elements */
+/* Pressure Valve Indicator */
+.difficulty-btn {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.easy {
+    background-color: var(--success-color);
+    color: white;
+}
+
+.medium {
+    background-color: var(--warning-color);
+    color: white;
+}
+
+.hard {
+    background-color: var(--danger-color);
+    color: white;
+    position: relative;
+    padding-left: 2rem;
+}
+
+.flashcard-completion {
+    text-align: center;
+    padding: 2rem;
+    background: #f8f9fa;
+    border-radius: 8px;
+    margin-top: 2rem;
+.difficulty-btn::before {
+    content: "⬤";
+    position: absolute;
+    left: 0.8rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.6rem;
+}
+
+/* Footer */
+footer {
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    padding: 1rem calc((100% - 1200px) / 2);
+    text-align: center;
+    margin-top: 2rem;
+}
+.easy::before { color: var(--success-color); }
+.medium::before { color: var(--warning-color); }
+.hard::before { color: var(--danger-color); }
+
+.social-links {
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+/* Pipe Connections */
+.tab-content::before {
+    content: "";
+    position: absolute;
+    top: -10px;
+    left: 20px;
+    width: 20px;
+    height: 10px;
+    border-left: 2px solid var(--secondary-color);
+    border-right: 2px solid var(--secondary-color);
+}
+
+.social-icon {
+    color: var(--text-light);
+    font-weight: 500;
+    transition: color 0.3s;
+/* LED Indicator */
+.active-indicator {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: var(--secondary-color);
+    box-shadow: 0 0 10px var(--secondary-color);
+    margin-right: 8px;
+    animation: pulse 2s infinite;
+}
+
+.social-icon:hover {
+    color: var(--secondary-color);
+@keyframes pulse {
+    0% { opacity: 0.5; }
+    50% { opacity: 1; }
+    100% { opacity: 0.5; }
 }
 
 /* Responsive Design */
+/* Responsive Adjustments */
 @media (max-width: 768px) {
-  header { 
-    flex-direction: column;
-    text-align: center;
-    padding: 1.2rem;
-  }
-  
-  nav ul {
-    margin-top: 1.5rem;
-    gap: 1.5rem;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-  
-  .grid {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
-  
-  .box {
-    padding: 1.5rem;
-  }
+    header {
+        flex-direction: column;
+        padding: 1rem;
+    }
+
+    nav ul {
+        margin-top: 1rem;
+    }
+
+    nav ul li {
+        margin-left: 1rem;
+    }
+
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .points, .modules-grid, .topics-grid {
+        grid-template-columns: 1fr;
+    header::before, header::after {
+        display: none;
+    }
+
+    .section-tabs {
+        flex-wrap: wrap;
+    }
+
+    .tab-btn {
+        flex: 1 0 auto;
+        padding: 0.8rem;
+        font-size: 0.9rem;
+    }
 }
-    text-align: center;
-    padding: 0.8rem;
+
+@media (max-width: 480px) {
+    .hero h1 {
+        font-size: 1.8rem;
+    }
+
+    .subtitle {
+        font-size: 1rem;
+    }
+
+    .social-links {
+        flex-direction: column;
+        gap: 0.5rem;
+    
+    .module-card, .topic-card, .point {
+        padding: 1rem;
+    }
+@media (max-width: 1240px) {
+  header, footer, main {
+    padding-left: 20px;
+    padding-right: 20px;
   }
 }
